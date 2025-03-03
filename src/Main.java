@@ -14,10 +14,30 @@ public class Main {
         IntSet set = new IntSet(5);
         set.print();
 
+        isEmpty(set);
 
+        hasElement(set, 1);
 
+        boolean temp = set.addElement(9);
+
+        set.print();
     }
 
+
+
+    /**
+     * Looks through the intSet instance for the element
+     * @param set The intSet instance you want to look through
+     * @param i The element your looking for
+     */
+    public static void hasElement(IntSet set, int i){
+        if (set.hasElement(i)) {
+            System.out.println("Set contains " + i);
+        }
+        else {
+            System.out.println("Set does not contain " + i);
+        }
+    }
 
     /**
      * Prints out whether the input IntSet Set contains data or not
