@@ -73,6 +73,27 @@ public class IntSet {
         }
     }
 
+    /**
+     * This removes a given element from this IntSet instance
+     * @param i The element you want to look for in this instance
+     * @return returns true if element was removed, false if not contained
+     */
+    public boolean removeElement(int i){
+        if(hasElement(i)){
+            for(int j = 0; j < array.length; j++){  // Find the element top removes location
+                if(array[j] == i) {
+                    for(int k = j; k < array.length - 1; k++){  // Shift remaining elements over by 1
+                        array[k] = array[k+1];
+                    }
+                    array[array.length - 1] = 0;    // Replace end element with 0
+                    break;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
 
 } // END IntSet class
 

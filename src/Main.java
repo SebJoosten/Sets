@@ -21,6 +21,10 @@ public class Main {
         boolean temp = set.addElement(9);
 
         set.print();
+
+        boolean temp2 = set.removeElement(9);
+
+        set.print();
     }
 
 
