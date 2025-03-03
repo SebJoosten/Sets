@@ -1,15 +1,36 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Arrays;
+
+/**
+    * This is a quick demonstration of basic set handling for JAVA
+    * Attempt 1
+    * <p>
+    * Main class that calls the set functions
+ */
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("This is a sets test");
+
+        IntSet set = new IntSet(5);
+        set.print();
+
+
+
+    }
+
+
+    /**
+     * Prints out whether the input IntSet Set contains data or not
+     * @param set The IntSet instance you wish to check
+     */
+    public static void isEmpty(IntSet set){
+        if (set.isEmpty()) {
+            System.out.println("Set is empty");
+        }
+        else {
+            System.out.println("Set is not empty");
         }
     }
-}
+
+
+} // END Main
