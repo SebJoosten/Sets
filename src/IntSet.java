@@ -11,12 +11,20 @@ public class IntSet {
     /**
      * Constructor for this set
      * Populates the array with random numbers for testing
-     * @param s is the size of the array in this set
+     * @param inArray An array of integers to initialise this set
+     */
+    public IntSet(int [] inArray){
+        array = inArray;
+    }
+
+    /**
+     * A constructor to add a random array set for practice ARRAY
+     * @param s is the length of the array set in this instance
      */
     public IntSet(int s){
         array = new int[s];
-        for(int i = 0; i < array.length; i++){
-            array[i] = rand.nextInt(1,9 );
+        for( int i = 0 ; i < array.length ; i++){
+            array[i] = rand.nextInt(1 , 10);
         }
     }
 

@@ -11,12 +11,19 @@ public class Main {
 
         System.out.println("This is a sets test");
 
+        // Make some sets for testing 1 random and 2 known
         IntSet set = new IntSet(5);
-        set.print();
+        IntSet setA = new IntSet(new int[]{1,2,3,4,5});
+        IntSet setB = new IntSet(new int[]{4,5,6,7,8,9,0});
 
-        isEmpty(set);
+
+        set.print();
+        setA.print();
+        setB.print();
 
         hasElement(set, 1);
+        hasElement(setA, 9);
+        hasElement(setB, 9);
 
         boolean temp = set.addElement(9);
 
