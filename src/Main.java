@@ -15,6 +15,7 @@ public class Main {
         IntSet set = new IntSet(5);
         IntSet setA = new IntSet(new int[]{1,2,3,4,5});
         IntSet setB = new IntSet(new int[]{4,5,6,7,8,9,0});
+        IntSet emptySet = new IntSet(new int[]{0,0,0,0,0,0,0});
 
 
         set.print();
@@ -31,7 +32,18 @@ public class Main {
 
         boolean temp2 = set.removeElement(9);
 
+        System.out.println("**** Compare Set to SetA *****");
         set.print();
+        setA.print();
+        IntSet combined = set.union(setA);
+        combined.print();
+
+        System.out.println("**** Compare SetB to EmptySet *****");
+        emptySet.print();
+        setB.print();
+        IntSet combinedEmpty = emptySet.union(setB);
+        combinedEmpty.print();
+
     }
 
 

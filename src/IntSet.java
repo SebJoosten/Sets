@@ -8,6 +8,8 @@ public class IntSet {
     int[] array;
     Random rand = new Random();
 
+    //***** constructors *****
+
     /**
      * Constructor for this set
      * Populates the array with random numbers for testing
@@ -26,6 +28,61 @@ public class IntSet {
         for( int i = 0 ; i < array.length ; i++){
             array[i] = rand.nextInt(1 , 10);
         }
+    }
+
+    //***** Methods *****
+
+    /**
+     * if this is empty return input, if input empty return this
+     * if both are populated look for doubles and merge them in to a new set
+     * @param setB The set you want to union with this
+     * @return The set that is either A - the input - a combination of the 2
+     */
+    public IntSet union(IntSet setB){
+        // if they are both empty return a new instance
+        if (setB.isEmpty() && isEmpty()) {
+            return new IntSet(1);
+        }
+        // if this is empty return B and return A if B is empty
+        if (isEmpty()) { return setB; }
+        if (setB.isEmpty()) { return this;}
+        // Otherwise make a new set and merge them
+
+        // Make an array to mark doubles and compare B
+        boolean[] doubles = new boolean[array.length];
+        for( int i = 0 ; i < array.length ; i++){
+            if(setB.hasElement(array[i])){
+               doubles[i] = true;
+            }
+        }
+
+        // count the doubles
+        int doubleCount = 0;
+        for(boolean d : doubles){
+            if(d){doubleCount++;}
+        }
+
+        // Make a new array of length this + setB - doubles and track index
+        int newSize = array.length + setB.array.length - doubleCount;
+        int[] newArray = new int[newSize];
+        int arrayIndex = 0;
+
+        // for all non double in this set copy to new array and incriment index of new
+        for(int i = 0 ; i < doubles.length ; i++){
+            if(!doubles[i] && array[i] != 0){
+                newArray[arrayIndex] =  array[i];
+                arrayIndex++;
+            }
+        }
+
+        // For all in set b just copy them
+        for(int i : setB.array){
+            newArray[arrayIndex] = i;
+            arrayIndex++;
+        }
+
+        // return the new IntSet with the new array in it
+        return new IntSet(newArray);
     }
 
     /**
