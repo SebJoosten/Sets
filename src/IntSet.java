@@ -33,6 +33,57 @@ public class IntSet {
     //***** Methods *****
 
     /**
+     * This will take in an IntSet to compare to this instance and return a new one with just the differences
+     * @param compare the Int set instance you want to compare the differences to
+     * @return a new IntSet with only the differences between them If none and empty set
+     */
+    public IntSet difference(IntSet compare){
+
+        // Create a new IntSet for storing differences. Return empty set if input is null.
+        IntSet difference = new IntSet(0);
+        if(compare == null || isEmpty()){
+            return difference;
+        }
+
+        // Add elements from 'compare' that are not in 'this'
+        for(int n : compare.array){
+            if (!hasElement(n)){
+                difference.addElement(n);
+            }
+        }
+
+        // Add elements from 'this' that are not in 'compare'
+        for(int n : array){
+            if (!compare.hasElement(n)){
+                difference.addElement(n);
+            }
+        }
+
+        return difference;
+    }
+
+    /**
+     * This compares the sets to see if they are the same even if in a different order
+     * @param compare The set you want to compare to this set
+     * @return true if the sets contane the same elements and faulse if not
+     */
+    public boolean equality(IntSet compare) {
+
+        // Check for empty array then check length if length is different they are not the same
+        if(compare == null || isEmpty() || array.length != compare.array.length){ return false; }
+
+        // Check every element in input array is in this instance
+        for(int i = 0; i < compare.array.length; i++) {
+            if ( !hasElement(compare.array[i]) ) {
+                return false;
+            }
+        }
+
+        // everything passed so they are the same
+        return true;
+    }
+
+    /**
      * if this is empty return input, if input empty return this
      * if both are populated look for doubles and merge them in to a new set
      * @param setB The set you want to union with this
@@ -89,6 +140,7 @@ public class IntSet {
      * Prints the current array in this set
      */
     public void print(){
+        if(isEmpty()){ return; }
         System.out.println(Arrays.toString(array));
     }
 
@@ -112,6 +164,7 @@ public class IntSet {
      * @return true if element contained otherwise false
      */
     public boolean hasElement(int i){
+        if(isEmpty()){ return false; }
         for (int j :array){
             if (j == i){
                 return true;

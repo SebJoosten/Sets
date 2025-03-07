@@ -32,17 +32,40 @@ public class Main {
 
         boolean temp2 = set.removeElement(9);
 
+        // **** Union ****
+        // Checking the compare functions
         System.out.println("**** Compare Set to SetA *****");
         set.print();
         setA.print();
         IntSet combined = set.union(setA);
         combined.print();
 
+        // Make a copy of a
+        IntSet copyA = new IntSet(setA.array);
+
         System.out.println("**** Compare SetB to EmptySet *****");
         emptySet.print();
         setB.print();
         IntSet combinedEmpty = emptySet.union(setB);
         combinedEmpty.print();
+
+        // **** Equality ****
+        // Check equality function
+        if(copyA.equality(setA)){
+            System.out.println("They are the same");
+
+        } else {
+            System.out.println("They are not the same");
+        }
+
+        // **** Difference ****
+        // A test for the difference it returns a new set with only the different characters
+        IntSet differenceA = new IntSet(new int[]{1,2,3,4,5,6});
+        IntSet differenceB = new IntSet(new int[]{5,6,7,8,9});
+
+        IntSet differenceC = differenceA.difference(differenceB);
+
+        differenceC.print();
 
     }
 
